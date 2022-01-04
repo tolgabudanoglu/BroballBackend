@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entity.Concrete;
 using System;
@@ -43,6 +44,12 @@ namespace Business.Concrete
         {
             return _userDal.Get(x=>x.UserId==userId);
 
+        }
+
+        public IResult Update(User user)
+        {
+            _userDal.Update(user);
+            return new Result(true,"Kullanıcı başarıyla güncellendi");
         }
 
 

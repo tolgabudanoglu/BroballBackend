@@ -13,7 +13,9 @@ namespace Business.Abstract
         List<User> GetAll();
         IResult Add(User user);
         IResult Delete(User user);
+        IResult Update(User user);
         User GetById(int userId);
+
         //List<User> GetAllByUserId(int userId);
         //List<User> GetAllByUserId(int userId);
         //List<User> GetByStarPoint(int min,int max);

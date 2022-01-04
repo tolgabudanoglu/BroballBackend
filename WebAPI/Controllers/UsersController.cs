@@ -20,7 +20,8 @@ namespace WebAPI.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
+        [HttpGet("getall")]
+      
         public List<User> Get()
         {
             IUserService userService = new UserManager(new EfUserDal());
@@ -28,7 +29,7 @@ namespace WebAPI.Controllers
             return result;
         }
 
-        [HttpPost]
+        [HttpPost("post")]
         public IActionResult Post(User user)
         {
             var result = _userService.Add(user);
@@ -38,6 +39,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpPut]
+        public IActionResult Update(User user)
+        {
+            var result = _userService.Update(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
 
         [HttpDelete]
         public IActionResult Delete(User user)
