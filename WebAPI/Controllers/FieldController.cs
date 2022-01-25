@@ -12,37 +12,36 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CityController : Controller
+    public class FieldController : Controller
     {
-        ICityService _cityService;
+        IFieldService _fieldService;
 
-        public CityController(ICityService cityService)
+        public FieldController(IFieldService fieldService)
         {
-            _cityService = cityService;
+            _fieldService = fieldService;
         }
 
         [HttpGet("getall")]
-        public List<City> Get()
+        public List<Field> Get()
         {
-            ICityService cityService = new CityManager(new EfCityDal());
-            var result = cityService.GetAll();
-            return result;  
+            IFieldService fieldService = new FieldManager(new EfFieldDal());
+            var result = fieldService.GetAll();
+            return result;
         }
         [HttpPost("add")]
-         public IActionResult Post(City city)
+        public IActionResult Post(Field field)
         {
-            var result = _cityService.Add(city);
+            var result = _fieldService.Add(field);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
         [HttpDelete("delete")]
-        public IActionResult Delete(City city)
+        public IActionResult Delete(Field field)
         {
-            var result = _cityService.Delete(city);
+            var result = _fieldService.Delete(field);
             if (result.Success)
             {
                 return Ok(result);
@@ -50,5 +49,12 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+
+
+
+
+
+
+       
     }
 }

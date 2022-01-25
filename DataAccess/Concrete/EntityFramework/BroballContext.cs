@@ -18,5 +18,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<User> Users { get; set; }
         public DbSet<City> Cities { get; set; }
 
+        public DbSet<Field> Fields { get; set; }
+
     }
 }

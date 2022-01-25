@@ -38,6 +38,9 @@ namespace WebAPI
             services.AddSingleton<ICityService, CityManager>();
             services.AddSingleton<ICityDal, EfCityDal>();
 
+            services.AddSingleton<IFieldService, FieldManager>();
+            services.AddSingleton<IFieldDal, EfFieldDal>();
+
 
 
 

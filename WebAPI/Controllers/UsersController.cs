@@ -21,7 +21,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-      
         public List<User> Get()
         {
             IUserService userService = new UserManager(new EfUserDal());
@@ -39,7 +38,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPut]
+        [HttpPut("update")]
         public IActionResult Update(User user)
         {
             var result = _userService.Update(user);
@@ -51,7 +50,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpDelete]
+        [HttpDelete("delete")]
         public IActionResult Delete(User user)
         {
             var result = _userService.Delete(user);
