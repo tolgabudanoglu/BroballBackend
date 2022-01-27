@@ -19,6 +19,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<City> Cities { get; set; }
 
         public DbSet<Field> Fields { get; set; }
+        public DbSet<League> Leagues { get; set; }
 
     }
 }

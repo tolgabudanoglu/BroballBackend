@@ -41,6 +41,8 @@ namespace WebAPI
             services.AddSingleton<IFieldService, FieldManager>();
             services.AddSingleton<IFieldDal, EfFieldDal>();
 
+            services.AddSingleton<ILeagueService, LeagueManager>();
+            services.AddSingleton<ILeagueDal, EfLeagueDal>();
 
 
 
