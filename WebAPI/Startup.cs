@@ -44,6 +44,18 @@ namespace WebAPI
             services.AddSingleton<ILeagueService, LeagueManager>();
             services.AddSingleton<ILeagueDal, EfLeagueDal>();
 
+            services.AddSingleton<ITeamService, TeamManager>();
+            services.AddSingleton<ITeamDal, EfTeamDal>();
+
+            services.AddSingleton<IQuestionService, QuestionManager>();
+            services.AddSingleton<IQuestionDal, EfQuestionDal>();
+
+            services.AddSingleton<IInqueryService, InqueryManager>();
+            services.AddSingleton<IInqueryDal, EfInqueryDal>();
+
+            services.AddSingleton<IProductService, ProductManager>();
+            services.AddSingleton<IProductDal, EfProductDal>();
+
 
 
             services.AddSwaggerGen(c =>
