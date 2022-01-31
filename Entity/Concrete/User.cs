@@ -17,6 +17,7 @@ namespace Entity.Concrete
         public string Position { get; set; }
         public string Password { get; set; }
         public int Score { get; set; }
+        public string Team { get; set; }
         public string Job { get; set; }
         public int Asist { get; set; }
         public DateTime DateOfBirth { get; set; }
