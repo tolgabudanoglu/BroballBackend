@@ -21,7 +21,7 @@ namespace Entity.Concrete
         public int Asist { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Tel { get; set; }
-        public int NumberofPenalties { get; set; }
+        
         public string ReasonforPenalty { get; set; }
         public string Adress { get; set; }
         public string Email { get; set; }
