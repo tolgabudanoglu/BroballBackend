@@ -25,6 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Question> Questions { get; set; }
         public DbSet<Inquery> Inqueries { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<CreditCard> CreditCards { get; set; }
 
     }
 }
