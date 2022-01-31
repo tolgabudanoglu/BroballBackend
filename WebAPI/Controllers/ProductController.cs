@@ -22,11 +22,11 @@ namespace WebAPI.Controllers
             _productService = productService;
         }
         [HttpGet("getall")]
-        public List<Product> Get()
+        public IActionResult Get()
         {
             IProductService productService = new ProductManager(new EfProductDal());
             var result = productService.GetAll();
-            return result;
+            return Ok(result);
         }
 
         [HttpPost("add")]

@@ -22,11 +22,11 @@ namespace WebAPI.Controllers
             _leagueService = leagueService;
         }
         [HttpGet("getall")]
-        public List<League> Get()
+        public IActionResult Get()
         {
             ILeagueService leagueService = new LeagueManager(new EfLeagueDal());
             var result = leagueService.GetAll();
-            return result;
+            return Ok(result);
         }
 
         [HttpPost("add")]

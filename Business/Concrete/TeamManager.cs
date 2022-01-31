@@ -32,9 +32,9 @@ namespace Business.Concrete
             return new Result(true, "Takım Başarıyla Silindi");
         }
 
-        public List<Team> GetAll()
+        public IDataResult<List<Team>> GetAll()
         {
-            return _teamDal.GetAll();
+            return new SuccessDataResult<List<Team>>(_teamDal.GetAll());
         }
 
         public Team GetById(int teamId)

@@ -31,9 +31,9 @@ namespace Business.Concrete
             return new Result(true,"Lig başarıyla silindi");
         }
 
-        public List<League> GetAll()
+        public IDataResult<List<League>> GetAll()
         {
-            return _leagueDal.GetAll();
+            return new SuccessDataResult<List<League>>(_leagueDal.GetAll());
         }
 
         public League GetById(int leagueId)

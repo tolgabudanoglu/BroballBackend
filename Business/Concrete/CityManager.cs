@@ -31,9 +31,9 @@ namespace Business.Concrete
             return new Result(true,"Şehir başarıyla silindi");
         }
 
-        public List<City> GetAll()
+        public IDataResult<List<City>> GetAll()
         {
-            return _cityDal.GetAll();
+            return new SuccessDataResult<List<City>>(_cityDal.GetAll());
         }
 
         public City GetById(int citiesId)

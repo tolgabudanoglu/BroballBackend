@@ -23,11 +23,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public List<CreditCard> Get()
+        public IActionResult Get()
         {
             ICreditCardService creditCardService = new CreditCardManager(new EfCreditCardDal());
             var result = creditCardService.GetAll();
-            return result;
+            return Ok(result);
         }
         [HttpPost("add")]
         public IActionResult Post(CreditCard creditCard)

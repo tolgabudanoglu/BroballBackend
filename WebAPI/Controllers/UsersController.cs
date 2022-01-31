@@ -21,11 +21,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public List<User> Get()
+        public IActionResult Get()
         {
             IUserService userService = new UserManager(new EfUserDal());
             var result = userService.GetAll();
-            return result;
+            return Ok(result);
         }
 
         [HttpPost("post")]

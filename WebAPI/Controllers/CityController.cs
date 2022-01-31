@@ -22,11 +22,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public List<City> Get()
+        public IActionResult Get()
         {
             ICityService cityService = new CityManager(new EfCityDal());
             var result = cityService.GetAll();
-            return result;  
+            return Ok(result);
         }
         [HttpPost("add")]
          public IActionResult Post(City city)

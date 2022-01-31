@@ -22,11 +22,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public List<Field> Get()
+        public IActionResult Get()
         {
             IFieldService fieldService = new FieldManager(new EfFieldDal());
             var result = fieldService.GetAll();
-            return result;
+            return Ok(result);
         }
         [HttpPost("add")]
         public IActionResult Post(Field field)

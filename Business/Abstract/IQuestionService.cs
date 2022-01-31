@@ -10,7 +10,7 @@ namespace Business.Abstract
 {
     public interface IQuestionService
     {
-        List<Question> GetAll();
+        IDataResult<List<Question>> GetAll();
         IResult Add(Question question);
     }
 }

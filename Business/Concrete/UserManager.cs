@@ -33,10 +33,9 @@ namespace Business.Concrete
 
         }
 
-        public List<User> GetAll()
+        public IDataResult<List<User>> GetAll()
         {
-            //İş Kodları
-            return _userDal.GetAll();
+            return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
         public User GetById(int userId)

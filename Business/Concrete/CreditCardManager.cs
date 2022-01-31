@@ -24,9 +24,9 @@ namespace Business.Concrete
            _creditCardDal.Add(creditCard);
             return new Result(true, "başarıyla eklendi");
         }
-        public List<CreditCard> GetAll()
+        public IDataResult<List<CreditCard>> GetAll()
         {
-            return _creditCardDal.GetAll();
+            return new SuccessDataResult<List<CreditCard>>(_creditCardDal.GetAll());
         }
 
 

@@ -10,7 +10,7 @@ namespace Business.Abstract
 {
     public interface ILeagueService
     {
-        List<League> GetAll();
+        IDataResult<List<League>> GetAll();
         IResult Add(League league);
         IResult Delete(League league);
         IResult Update(League league);

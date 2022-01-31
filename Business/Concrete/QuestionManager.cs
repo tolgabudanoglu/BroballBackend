@@ -23,9 +23,9 @@ namespace Business.Concrete
             return new Result(true, "Soru Başarıyla Gönderildi");
         }
 
-        public List<Question> GetAll()
+        public IDataResult<List<Question>> GetAll()
         {
-            return _questionDal.GetAll();
+            return new SuccessDataResult<List<Question>>(_questionDal.GetAll());
         }
     }
 }

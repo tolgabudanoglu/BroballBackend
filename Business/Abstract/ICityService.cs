@@ -10,7 +10,7 @@ namespace Business.Abstract
 {
     public interface ICityService
     {
-        List<City> GetAll();
+        IDataResult<List<City>> GetAll();
         IResult Add(City city);
         IResult Delete(City city);
         City GetById(int citiesId);

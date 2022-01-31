@@ -21,11 +21,11 @@ namespace WebAPI.Controllers
             _questionService = questionService;
         }
         [HttpGet("getall")]
-        public List<Question> Get()
+        public IActionResult Get()
         {
             IQuestionService questionService = new QuestionManager(new EfQuestionDal());
             var result = questionService.GetAll();
-            return result;
+            return Ok(result);
         }
 
         [HttpPost("add")]

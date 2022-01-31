@@ -31,9 +31,9 @@ namespace Business.Concrete
             return new Result(true,"Halısaha başarıyla silindi");
         }
 
-        public List<Field> GetAll()
+        public IDataResult<List<Field>> GetAll()
         {
-            return _fieldDal.GetAll();
+            return new SuccessDataResult<List<Field>>(_fieldDal.GetAll());
         }
 
         public IResult Update(Field field)

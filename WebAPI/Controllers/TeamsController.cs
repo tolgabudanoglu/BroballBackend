@@ -21,11 +21,11 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getall")]
-        public List<Team> Get()
+        public IActionResult Get()
         {
             ITeamService teamService = new TeamManager(new EfTeamDal());
             var result = teamService.GetAll();
-            return result;
+            return Ok(result);
         }
 
         [HttpPost("post")]

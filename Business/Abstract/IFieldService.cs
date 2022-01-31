@@ -10,7 +10,7 @@ namespace Business.Abstract
 {
      public interface IFieldService
     {
-        List<Field> GetAll();
+        IDataResult<List<Field>> GetAll();
         IResult Add(Field field);
         IResult Delete(Field field);
         IResult Update(Field field);

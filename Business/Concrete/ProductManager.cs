@@ -41,9 +41,9 @@ namespace Business.Concrete
             return new Result(true, "ürün silindi");
         }
 
-        public List<Product> GetAll()
+        public IDataResult<List<Product>> GetAll()
         {
-            return _productdal.GetAll();
+            return new SuccessDataResult<List<Product>>(_productdal.GetAll());
         }
 
         public Product GetById(int productId)
