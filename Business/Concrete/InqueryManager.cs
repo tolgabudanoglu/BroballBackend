@@ -22,7 +22,11 @@ namespace Business.Concrete
             _inqueryDal.Add(inquery);
             return new Result(true, "Soru Başarıyla Gönderildi");
         }
+        public IDataResult<List<Inquery>> GetAll()
+        {
+            return new SuccessDataResult<List<Inquery>>(_inqueryDal.GetAll());
+        }
 
-        
+
     }
 }

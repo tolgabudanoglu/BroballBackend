@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -30,7 +32,13 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
+        [HttpGet("getall")]
+        public IActionResult Get()
+        {
+            IInqueryService InqueryService = new InqueryManager(new EfInqueryDal());
+            var result = _inqueryService.GetAll();
+            return Ok(result);
+        }
 
 
     }

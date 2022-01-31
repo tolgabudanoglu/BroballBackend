@@ -12,5 +12,9 @@ namespace Business.Abstract
     {
         
         IResult Add(Inquery inquery);
+        public IDataResult<List<Inquery>> GetAll()
+        {
+            return new SuccessDataResult<List<Inquery>>(_inqueryDal.GetAll());
+        }
     }
 }
