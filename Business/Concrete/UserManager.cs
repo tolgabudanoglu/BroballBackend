@@ -61,6 +61,18 @@ namespace Business.Concrete
                 return new Result(false, "giriş başarısız");
             }
         }
+        public IResult GetUserByEmail(string email)
+
+        {
+            var result = _userDal.Get(user => email == user.Email);
+            if (result == null)
+            {
+                return new ErrorResult("data yok");
+            }
+
+            return new SuccessDataResult<string>(result.UserId.ToString(), "data getirildi");
+
+        }
 
 
 

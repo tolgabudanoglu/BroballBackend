@@ -26,6 +26,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Inquery> Inqueries { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<CreditCard> CreditCards { get; set; }
+        public DbSet<Susbcribe> Susbcribes { get; set; }
 
     }
 }

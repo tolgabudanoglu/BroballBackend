@@ -59,6 +59,9 @@ namespace WebAPI
             services.AddSingleton<ICreditCardService, CreditCardManager>();
             services.AddSingleton<ICreditCardDal, EfCreditCardDal>();
 
+            services.AddSingleton<ISusbcribeService, SusbcribeManager>();
+            services.AddSingleton<ISusbcribeDal, EfSusbcribeDal>();
+
 
 
             services.AddSwaggerGen(c =>
