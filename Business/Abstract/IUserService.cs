@@ -15,6 +15,7 @@ namespace Business.Abstract
         IResult Delete(User user);
         IResult Update(User user);
         User GetById(int userId);
+        IResult Login(string email, string password);
 
         //List<User> GetAllByUserId(int userId);
         //List<User> GetAllByUserId(int userId);

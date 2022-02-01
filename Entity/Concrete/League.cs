@@ -9,7 +9,7 @@ namespace Entity.Concrete
 {
     public class League:IEntity
     {
-        public int Id { get; set; }
+        
         public int LeagueId { get; set; }
         public string LeagueName { get; set; }
         public int TeamId { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -62,6 +63,12 @@ namespace WebAPI.Controllers
 
         }
 
-        
+        [HttpGet("/Login")]
+        public IResult Login(string mail, string password)
+        {
+            return _userService.Login(mail, password);
+        }
+
+
     }
 }
