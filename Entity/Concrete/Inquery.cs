@@ -10,7 +10,7 @@ namespace Entity.Concrete
     public class Inquery:IEntity
     {
         public int InqueryId { get; set; }
-        public string Email { get; set; }
+        public string Cevap { get; set; }
         public string Soru { get; set; }
     }
 }
