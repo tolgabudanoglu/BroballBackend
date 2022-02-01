@@ -43,11 +43,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
-        public User GetById(int userId)
-        {
-            return _userDal.Get(x=>x.UserId==userId);
+        //public User GetById(int userId)
+        //{
+        //    return _userDal.Get(x=>x.UserId==userId);
 
-        }
+        //}
 
         public IDataResult<List<UserDetailDto>> GetUserDetailsByCityId(int id)
         {
