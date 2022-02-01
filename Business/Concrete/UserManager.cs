@@ -70,6 +70,30 @@ namespace Business.Concrete
             return new Result(true,"Kullanıcı başarıyla güncellendi");
         }
 
+        public IResult Login(string email, string password)
+        {
+            var result = _userDal.Get(user => user.Email == email);
+
+            if (result == null)
+                return new Result(false, "giriş başarısız");
+            if (result.Password.Equals(password)) return new Result(true, "giriş başarılı");
+            {
+                return new Result(false, "giriş başarısız");
+            }
+        }
+        public IResult GetUserByEmail(string email)
+
+        {
+            var result = _userDal.Get(user => email == user.Email);
+            if (result == null)
+            {
+                return new ErrorResult("data yok");
+            }
+
+            return new SuccessDataResult<string>(result.UserId.ToString(), "data getirildi");
+
+        }
+
 
 
 

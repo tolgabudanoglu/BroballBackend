@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFramework;
 using Entity.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -62,6 +63,7 @@ namespace WebAPI.Controllers
 
         }
 
+<<<<<<< HEAD
         [HttpGet("getusersbycitiesid")]
         public IActionResult GetUsersByCitiesId(int id)
         {
@@ -71,6 +73,17 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
+=======
+        [HttpGet("/Login")]
+        public IResult Login(string mail, string password)
+        {
+            return _userService.Login(mail, password);
+        }
+        [HttpGet("/getUserByEmail")]
+        public IResult GetUserByEmail(string mail)
+        {
+            return _userService.GetUserByEmail(mail);
+>>>>>>> 0c6a465e12e65d76d26f141dfeb0a631b123f9f4
         }
 
 
