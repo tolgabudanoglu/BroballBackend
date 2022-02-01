@@ -29,5 +29,7 @@ namespace Entity.Concrete
         public int TeamId { get; set; }
         public int StarPoint { get; set; }
         public int CitiesId { get; set; }
+        public int LeagueId { get; set; }
+     
     }
 }

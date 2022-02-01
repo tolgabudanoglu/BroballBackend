@@ -23,8 +23,8 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult Get()
         {
-            IUserService userService = new UserManager(new EfUserDal());
-            var result = userService.GetAll();
+           // IUserService userService = new UserManager(new EfUserDal());
+            var result = _userService.GetAll();
             return Ok(result);
         }
 
@@ -62,6 +62,17 @@ namespace WebAPI.Controllers
 
         }
 
-        
+        [HttpGet("getusersbycitiesid")]
+        public IActionResult GetUsersByCitiesId(int id)
+        {
+            var result = _userService.GetUsersByCityId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
     }
 }
