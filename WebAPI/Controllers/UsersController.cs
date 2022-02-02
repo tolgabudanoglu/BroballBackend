@@ -24,8 +24,8 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult Get()
         {
-            IUserService userService = new UserManager(new EfUserDal());
-            var result = userService.GetAll();
+            // IUserService userService = new UserManager(new EfUserDal());
+            var result = _userService.GetAll();
             return Ok(result);
         }
 
@@ -63,17 +63,32 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpGet("/Login")]
-        public IResult Login(string mail, string password)
+
+        [HttpGet("getusersbycitiesid")]
+        public IActionResult GetUsersByCitiesId(int id)
         {
-            return _userService.Login(mail, password);
-        }
-        [HttpGet("/getUserByEmail")]
-        public IResult GetUserByEmail(string mail)
-        {
-            return _userService.GetUserByEmail(mail);
+            var result = _userService.GetUsersByCityId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
         }
 
+            [HttpGet("/Login")]
+            public IResult Login(string mail, string password)
+            {
+                return _userService.Login(mail, password);
+            }
+            [HttpGet("/getUserByEmail")]
+            public IResult GetUserByEmail(string mail)
+            {
+                return _userService.GetUserByEmail(mail);
 
+            }
+
+
+        }
     }
-}
+

@@ -1,5 +1,6 @@
 ﻿using Core.Utilities.Results;
 using Entity.Concrete;
+using Entity.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,14 @@ namespace Business.Abstract
         IResult Add(User user);
         IResult Delete(User user);
         IResult Update(User user);
-        User GetById(int userId);
+     //   User GetById(int userId);
         IResult Login(string email, string password);
         IResult GetUserByEmail(string email);
+
+        IDataResult<List<User>> GetUsersByCityId(int id);
+        IDataResult<List<User>> GetUsersByLeagueId(int id);
+
+        IDataResult<List<UserDetailDto>> GetUserDetailsByCityId(int id);
 
         //List<User> GetAllByUserId(int userId);
         //List<User> GetAllByUserId(int userId);
