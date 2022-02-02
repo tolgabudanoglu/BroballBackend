@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Adapters.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -13,11 +14,20 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
+        IMailService _mailService;
         IUserDal _userDal;
 
-        public UserManager(IUserDal userDal)
+        public EfUserDal EfUserDal { get; }
+
+        public UserManager(IUserDal userDal, IMailService mailService)
         {
             _userDal = userDal;
+            _mailService = mailService;
+        }
+
+        public UserManager(EfUserDal efUserDal)
+        {
+            EfUserDal = efUserDal;
         }
 
         public IResult Add(User user)
@@ -38,10 +48,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
-        public User GetById(int userId)
+        public IResult GetUserById(int userId)
         {
-            return _userDal.Get(x=>x.UserId==userId);
-
+            var result = _userDal.Get(user => userId == user.UserId);
+            return new DataResult<User>(result, true, "data geldi");
         }
 
         public IResult Update(User user)
@@ -74,7 +84,28 @@ namespace Business.Concrete
 
         }
 
+        public IResult SendMail(string email)
+        {
+            var result = _userDal.Get(user => email == user.Email);
 
+
+
+            if (!isMailExist(result.Email))
+            {
+                _mailService.SendMailForPassword(result);
+                return new SuccessResult("Mail Gönderildi");
+            }
+
+            return new ErrorResult("Mail Gönderilemedi");
+        }
+
+        private bool isMailExist(string mail)
+        {
+            var result = _userDal.Get(user => mail == user.Email);
+            if (result == null)
+                return true;
+            return false;
+        }
 
 
 
