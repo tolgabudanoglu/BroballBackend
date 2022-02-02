@@ -15,6 +15,7 @@ namespace Entity.Concrete
         public string SubscribePrice { get; set; }
         public string SubscribeType { get; set; } 
         public string SubscribeAdvantages { get; set; }
-        
+        public string SubscribeAdvantages2 { get; set; }
+
     }
 }
