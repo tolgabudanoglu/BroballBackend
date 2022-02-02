@@ -36,9 +36,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<City>>(_cityDal.GetAll());
         }
 
-        public City GetById(int citiesId)
+        public IDataResult<City> GetById(int citiesId)
         {
-            return _cityDal.Get(x=>x.CitiesId==citiesId);
+            return new SuccessDataResult<City>(_cityDal.Get(x=>x.CitiesId==citiesId));
         }
     }
 }

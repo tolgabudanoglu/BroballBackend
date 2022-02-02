@@ -13,6 +13,6 @@ namespace Business.Abstract
         IDataResult<List<City>> GetAll();
         IResult Add(City city);
         IResult Delete(City city);
-        City GetById(int citiesId);
+        public IDataResult<City> GetById(int citiesId);
     }
 }

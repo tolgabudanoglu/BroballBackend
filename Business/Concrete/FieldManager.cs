@@ -36,6 +36,11 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Field>>(_fieldDal.GetAll());
         }
 
+        public IDataResult<List<Field>> GetFieldsByCityId(int id)
+        {
+            return new SuccessDataResult<List<Field>>(_fieldDal.GetAll(p => p.CitiesId == id));
+        }
+
         public IResult Update(Field field)
         {
             _fieldDal.Update(field);

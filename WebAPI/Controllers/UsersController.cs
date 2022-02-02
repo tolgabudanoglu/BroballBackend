@@ -65,9 +65,9 @@ namespace WebAPI.Controllers
 
 
         [HttpGet("getusersbycitiesid")]
-        public IActionResult GetUsersByCitiesId(int id)
+        public IActionResult GetUsersByCities(int citiesId)
         {
-            var result = _userService.GetUsersByCityId(id);
+            var result = _userService.GetUsersByCityId(citiesId);
             if (result.Success)
             {
                 return Ok(result);
@@ -76,11 +76,16 @@ namespace WebAPI.Controllers
 
         }
 
+
+
+
+
             [HttpGet("/Login")]
             public IResult Login(string mail, string password)
             {
                 return _userService.Login(mail, password);
             }
+
             [HttpGet("/getUserByEmail")]
             public IResult GetUserByEmail(string mail)
             {

@@ -14,7 +14,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CityController : Controller
     {
-        ICityService _cityService;
+        private ICityService _cityService;
 
         public CityController(ICityService cityService)
         {
@@ -24,10 +24,12 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult Get()
         {
-            ICityService cityService = new CityManager(new EfCityDal());
-            var result = cityService.GetAll();
+           // ICityService cityService = new CityManager(new EfCityDal());
+            var result = _cityService.GetAll();
             return Ok(result);
         }
+
+
         [HttpPost("add")]
          public IActionResult Post(City city)
         {
