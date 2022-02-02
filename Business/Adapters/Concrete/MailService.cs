@@ -21,7 +21,9 @@ namespace Business.Adapters.Concrete
             message.From = new MailAddress("broballdestek@gmail.com");
             message.Subject = "Şifremi Unuttum";
             message.Body = "MEVCUT ŞİFRENİZ: " + user.Password;
+            
             client.Send(message);
+            message.To.Clear();
         }
     }
 }

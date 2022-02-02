@@ -20,7 +20,7 @@ namespace Business.Concrete
         ICityDal _cityDal;
         ILeagueDal _leagueDal;
 
-<<<<<<< HEAD
+
         public EfUserDal EfUserDal { get; }
 
         public UserManager(IUserDal userDal, IMailService mailService)
@@ -32,15 +32,8 @@ namespace Business.Concrete
         public UserManager(EfUserDal efUserDal)
         {
             EfUserDal = efUserDal;
-=======
-        public UserManager(IUserDal userDal,ICityDal cityDal,ILeagueDal leagueDal)
-        {
-            _userDal = userDal;
-            _cityDal = cityDal;
-            _leagueDal = leagueDal;
->>>>>>> d84ba4c1128137e06c7f5521bde516193affa2e0
-        }
 
+        }
         public IResult Add(User user)
         {
             _userDal.Add(user);
@@ -60,33 +53,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
-<<<<<<< HEAD
+
         public IResult GetUserById(int userId)
         {
             var result = _userDal.Get(user => userId == user.UserId);
             return new DataResult<User>(result, true, "data geldi");
-=======
-        //public User GetById(int userId)
-        //{
-        //    return _userDal.Get(x=>x.UserId==userId);
-
-        //}
-
-        public IDataResult<List<UserDetailDto>> GetUserDetailsByCityId(int id)
-        {
-            throw new NotImplementedException();
         }
 
-        public IDataResult<List<User>> GetUsersByCityId(int id)
-        {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(p => p.CitiesId == id));
-        }
-
-        public IDataResult<List<User>> GetUsersByLeagueId(int id)
-        {
-            throw new NotImplementedException();
->>>>>>> d84ba4c1128137e06c7f5521bde516193affa2e0
-        }
+       
 
         public IResult Update(User user)
         {
