@@ -24,12 +24,20 @@ namespace Entity.Concrete
         public string Tel { get; set; }
         public string ReasonforPenalty { get; set; }
         public string Adress { get; set; }
+<<<<<<< HEAD
         [EmailAddress] public string Email { get; set; }
         public int TeamUserId { get; set; }
         public int StarPoint { get; set; }
 <<<<<<< HEAD
         
         
+=======
+        public string Email { get; set; }
+        
+        public int StarPoint { get; set; }
+<<<<<<< HEAD
+        
+>>>>>>> 67dd4654a5606da1b7e495e8d636d9cf58b40c55
 =======
         public int CitiesId { get; set; }
 
