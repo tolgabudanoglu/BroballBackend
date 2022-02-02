@@ -15,17 +15,21 @@ namespace Business.Abstract
         IResult Add(User user);
         IResult Delete(User user);
         IResult Update(User user);
-     //   User GetById(int userId);
-        IResult Login(string email, string password);
-        IResult GetUserByEmail(string email);
+
+        IResult GetUserById(int userId);
 
         IDataResult<List<User>> GetUsersByCityId(int id);
         IDataResult<List<User>> GetUsersByLeagueId(int id);
 
         IDataResult<List<UserDetailDto>> GetUserDetailsByCityId(int id);
 
-        //List<User> GetAllByUserId(int userId);
-        //List<User> GetAllByUserId(int userId);
-        //List<User> GetByStarPoint(int min,int max);
+        IResult Login(string email, string password);
+        IResult GetUserByEmail(string email);
+        IResult SendMail(string email);
+
+      
+      
+
+
     }
 }

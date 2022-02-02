@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
         }
 
 
-<<<<<<< HEAD
+
         [HttpGet("getusersbycitiesid")]
         public IActionResult GetUsersByCities(int citiesId)
         {
@@ -76,12 +76,11 @@ namespace WebAPI.Controllers
             return BadRequest(result);
 
         }
+       
 
 
 
-
-
-            [HttpGet("/Login")]
+        [HttpGet("/Login")]
             public IResult Login(string mail, string password)
             {
                 return _userService.Login(mail, password);
@@ -93,24 +92,11 @@ namespace WebAPI.Controllers
                 return _userService.GetUserByEmail(mail);
 
             }
-
-
-=======
-        [HttpGet("/Login")]
-        public IResult Login(string mail, string password)
-        {
-            return _userService.Login(mail, password);
-        }
-        [HttpGet("/getUserByEmail")]
-        public IResult GetUserByEmail(string email)
-        {
-            return _userService.GetUserByEmail(email);
-        }
         [HttpGet("/getUserById")]
         public IResult GetUserById(int userId)
         {
             return _userService.GetUserById(userId);
->>>>>>> 2e3ef67f91ee87206e0efbdd2e267624c6d9064c
+
         }
 
         [HttpGet("/sendMail")]

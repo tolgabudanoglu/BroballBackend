@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Adapters.Abstract;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -14,17 +15,25 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
+        IMailService _mailService;
         IUserDal _userDal;
         ICityDal _cityDal;
         ILeagueDal _leagueDal;
 
-        public UserManager(IUserDal userDal,ICityDal cityDal,ILeagueDal leagueDal)
+
+        public EfUserDal EfUserDal { get; }
+
+        public UserManager(IUserDal userDal, IMailService mailService)
         {
             _userDal = userDal;
-            _cityDal = cityDal;
-            _leagueDal = leagueDal;
+            _mailService = mailService;
         }
 
+        public UserManager(EfUserDal efUserDal)
+        {
+            EfUserDal = efUserDal;
+
+        }
         public IResult Add(User user)
         {
             _userDal.Add(user);
@@ -40,18 +49,15 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetAll()
         {
+            var result = _userDal.GetAll();
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 
-        //public User GetById(int userId)
-        //{
-        //    return _userDal.Get(x=>x.UserId==userId);
 
-        //}
-
-        public IDataResult<List<UserDetailDto>> GetUserDetailsByCityId(int id)
+        public IResult GetUserById(int userId)
         {
-            throw new NotImplementedException();
+            var result = _userDal.Get(user => userId == user.UserId);
+            return new DataResult<User>(result, true, "data geldi");
         }
 
         public IDataResult<List<User>> GetUsersByCityId(int id)
@@ -59,10 +65,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<User>>(_userDal.GetAll(p => p.CitiesId == id));
         }
 
-        public IDataResult<List<User>> GetUsersByLeagueId(int id)
-        {
-            throw new NotImplementedException();
-        }
+
+
+
 
         public IResult Update(User user)
         {
@@ -93,6 +98,43 @@ namespace Business.Concrete
             return new SuccessDataResult<string>(result.UserId.ToString(), "data getirildi");
 
         }
+
+        public IResult SendMail(string email)
+        {
+            var result = _userDal.Get(user => email == user.Email);
+            if (!isMailExist(result.Email))
+            {
+                _mailService.SendMailForPassword(result);
+                return new SuccessResult("Mail Gönderildi");
+            }
+
+            return new ErrorResult("Mail Gönderilemedi");
+        }
+
+
+
+        private bool isMailExist(string mail)
+        {
+            var result = _userDal.Get(user => mail == user.Email);
+            if (result == null)
+                return true;
+            return false;
+        }
+
+        public IDataResult<List<User>> GetUsersByLeagueId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDataResult<List<UserDetailDto>> GetUserDetailsByCityId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
 
 
 
