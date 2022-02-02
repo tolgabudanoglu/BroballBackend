@@ -27,7 +27,17 @@ namespace Entity.Concrete
         [EmailAddress] public string Email { get; set; }
         public int TeamUserId { get; set; }
         public int StarPoint { get; set; }
+<<<<<<< HEAD
         
         
+=======
+        public int CitiesId { get; set; }
+
+        public int LeagueId { get; set; }
+     
+
+        public int SubscribeId { get; set; }
+
+>>>>>>> d84ba4c1128137e06c7f5521bde516193affa2e0
     }
 }
