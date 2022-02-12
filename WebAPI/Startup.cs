@@ -2,7 +2,10 @@ using Business.Abstract;
 using Business.Adapters.Abstract;
 using Business.Adapters.Concrete;
 using Business.Concrete;
+using Core.Utilities.Helper;
+using Core.Utilities.Helpers.FileHelper;
 using DataAccess.Abstract;
+using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,7 +37,11 @@ namespace WebAPI
         {
 
             services.AddSingleton<IMailService, MailService>();
-
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Sample.FileUpload.Api", Version = "v1" });
+                c.OperationFilter<SwaggerFileOperationFilter>();
+            });
             services.AddCors();
             services.AddControllers();
             services.AddSingleton<IUserService,UserManager>();
@@ -67,11 +74,19 @@ namespace WebAPI
             services.AddSingleton<ISusbcribeService, SusbcribeManager>();
             services.AddSingleton<ISusbcribeDal, EfSusbcribeDal>();
 
+            services.AddSingleton<IImageService, ImageManager>();
+            services.AddSingleton<IImageDal, EfImageDal>();
 
+            services.AddSingleton<ICommentService, CommentManager>();
+            services.AddSingleton<ICommentDal, EfCommentDal>();
+
+            services.AddSingleton<IAboutService, AboutManager>();
+            services.AddSingleton<IAboutDal, EfAboutDal>();
+            services.AddSingleton<IFileHelper, FileHelperManager>();
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
+                c.SwaggerDoc("v2", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -83,10 +98,14 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
-            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
-            
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader().WithMethods("PUT", "DELETE", "POST", "GET"));
+            app.UseCors(builder => builder.WithOrigins("http://localhost:44318").AllowAnyHeader().WithMethods("PUT", "DELETE", "POST", "GET"));
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 

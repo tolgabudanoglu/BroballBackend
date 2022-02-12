@@ -39,8 +39,19 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPut("update")]
-        public IActionResult Update(User user)
+        //[HttpPut("update")]
+        //public IActionResult Update(User user)
+        //{
+        //    var result = _userService.Update(user);
+        //    if (result.Success)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return BadRequest(result);
+        //}
+
+        [HttpPut("/putUser")]
+        public IActionResult Update([FromBody] User user)
         {
             var result = _userService.Update(user);
             if (result.Success)
@@ -49,7 +60,6 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
 
         [HttpDelete("delete")]
         public IActionResult Delete(User user)
@@ -86,12 +96,24 @@ namespace WebAPI.Controllers
                 return _userService.Login(mail, password);
             }
 
-            [HttpGet("/getUserByEmail")]
-            public IResult GetUserByEmail(string mail)
-            {
-                return _userService.GetUserByEmail(mail);
+            //[HttpGet("/getUserByEmail")]
+            //public IResult GetUserByEmail(string mail)
+            //{
+            //    return _userService.GetUserByEmail(mail);
 
+            //}
+
+        [HttpGet("getUserByEmail")]
+        public IActionResult GetUserByEmail(string mail)
+        {
+            var result = _userService.GetUserByEmail(mail);
+            if (result.Success)
+            {
+                return Ok(result);
             }
+            return BadRequest(result);
+        }
+
         [HttpGet("/getUserById")]
         public IResult GetUserById(int userId)
         {
@@ -103,7 +125,160 @@ namespace WebAPI.Controllers
         public IResult SendMail(string email)
         {
             return _userService.SendMail(email);
- }
-    } }
+        }
+        [HttpGet("/sendMail2")]
+        public IResult SendMail2(string email)
+        {
+            return _userService.SendMail2(email);
+        }
+
+        [HttpGet("/sendMail3")]
+        public IResult SendMail3(string email)
+        {
+            return _userService.SendMail3(email);
+        }
+
+
+        //[HttpGet("getall")]
+        //public IDataResult<List<User>> GetAll()
+        //{
+
+        //    return _userService.GetAll();
+
+        //}
+
+        
+       
+        
+
+        [HttpGet("getusersbyuserid")]
+        public IActionResult GetUsersByUser(int userId)
+        {
+            var result = _userService.GetUsersByUserId(userId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+       
+
+
+        [HttpGet("getPasswordByUserId")]
+        public IActionResult GetPasswordByUserId(int id)
+        {
+            var result = _userService.GetPasswordByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getStarPointByUserId")]
+        public IActionResult GetStarPointByUserId(int id)
+        {
+            var result = _userService.GetStarPointByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getTeamIdByUserId")]
+        public IActionResult GetTeamIdByUserId(int id)
+        {
+            var result = _userService.GetTeamIdByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getLeagueIdByUserId")]
+        public IActionResult GetLeagueIdByUserId(int id)
+        {
+            var result = _userService.GetLeagueIdByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getSubscribeIdByUserId")]
+        public IActionResult GetSubscribeIdByUserId(int id)
+        {
+            var result = _userService.GetSubscribeIdByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getAsistByUserId")]
+        public IActionResult GetAsistByUserId(int id)
+        {
+            var result = _userService.GetAsistByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getCitiesIdByUserId")]
+        public IActionResult GetCitiesIdByUserId(int id)
+        {
+            var result = _userService.GetCitiesIdByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getReasonForPenaltyByUserId")]
+        public IActionResult GetReasonForPenaltyByUserId(int id)
+        {
+            var result = _userService.GetReasonForPenaltyByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getScoreByUserId")]
+        public IActionResult GetScoreByUserId(int id)
+        {
+            var result = _userService.GetScoreByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("getEmailByUserId")]
+        public IActionResult GetEmailByUserId(int id)
+        {
+            var result = _userService.GetEmailByUserId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+
+
+
+
+
+    } 
+
+}
     
 

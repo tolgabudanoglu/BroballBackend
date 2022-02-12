@@ -15,7 +15,7 @@ namespace Business.Abstract
         IResult Delete(Team team);
         IResult Update(Team team);
         Team GetById(int TeamId);
-
+        IDataResult<List<Team>> GetTeamsByLeagueId(int id);
 
 
     }

@@ -15,7 +15,9 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
+       
         IMailService _mailService;
+        
         IUserDal _userDal;
         ICityDal _cityDal;
         ILeagueDal _leagueDal;
@@ -27,6 +29,7 @@ namespace Business.Concrete
         {
             _userDal = userDal;
             _mailService = mailService;
+            
         }
 
         public UserManager(EfUserDal efUserDal)
@@ -105,6 +108,28 @@ namespace Business.Concrete
             if (!isMailExist(result.Email))
             {
                 _mailService.SendMailForPassword(result);
+                return new Result(true,"Mail Gönderildi");
+            }
+                
+            return new Result(false,"Mail Gönderilemedi");
+        }
+        public IResult SendMail2(string email)
+        {
+            var result = _userDal.Get(user => email == user.Email);
+            if (!isMailExist(result.Email))
+            {
+                _mailService.SendMailForEmail(result);
+                return new SuccessResult("Mail Gönderildi");
+            }
+
+            return new ErrorResult("Mail Gönderilemedi");
+        }
+        public IResult SendMail3(string email)
+        {
+            var result = _userDal.Get(user => email == user.Email);
+            if (!isMailExist(result.Email))
+            {
+                _mailService.SendMailForQuestion(result);
                 return new SuccessResult("Mail Gönderildi");
             }
 
@@ -129,6 +154,89 @@ namespace Business.Concrete
         public IDataResult<List<UserDetailDto>> GetUserDetailsByCityId(int id)
         {
             throw new NotImplementedException();
+        }
+        public IDataResult<List<User>> GetUsersByUserId(int id)
+        {
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(p => p.UserId == id));
+        }
+
+        public IResult GetPasswordByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<string>(result.Password.ToString(), "data getirildi");
+        }
+
+
+        public IResult GetStarPointByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<int>(result.StarPoint, "data getirildi");
+        }
+        public IResult GetEmailByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<string>(result.Email.ToString(), "data getirildi");
+        }
+        public IResult GetTeamIdByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<int>(result.TeamId, "data getirildi");
+        }
+
+        public IResult GetLeagueIdByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<int>(result.LeagueId, "data getirildi");
+        }
+
+        public IResult GetSubscribeIdByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<int>(result.SubscribeId, "data getirildi");
+        }
+
+        public IResult GetAsistByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<int>(result.Asist, "data getirildi");
+        }
+
+        public IResult GetCitiesIdByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<int>(result.CitiesId, "data getirildi");
+        }
+
+        public IResult GetReasonForPenaltyByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<string>(result.ReasonOfPenalty.ToString(), "data getirildi");
+        }
+
+        public IResult GetScoreByUserId(int id)
+        {
+            var result = _userDal.Get(user => id == user.UserId);
+            if (result == null) return
+                    new ErrorResult("data yok");
+            return new SuccessDataResult<int>(result.Score, "data getirildi");
         }
 
 

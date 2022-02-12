@@ -47,5 +47,10 @@ namespace Business.Concrete
             _teamDal.Update(team);
             return new Result(true, "Takım Başarıyla Eklendi");
         }
+
+        public IDataResult<List<Team>> GetTeamsByLeagueId(int id)
+        {
+            return new SuccessDataResult<List<Team>>(_teamDal.GetAll(p => p.LeagueId == id));
+        }
     }
 }

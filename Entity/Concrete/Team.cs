@@ -17,5 +17,16 @@ namespace Entity.Concrete
         public int Drawn { get; set; }
         public int Lost { get; set; }
         public int Points { get; set; }
+        public string oyuncu1 { get; set; }
+        public string oyuncu2 { get; set; }
+        public string oyuncu3 { get; set; }
+        public string oyuncu4 { get; set; }
+        public string oyuncu5 { get; set; }
+        public string oyuncu6 { get; set; }
+        public string oyuncu7 { get; set; }
+        public string oyuncu8 { get; set; }
+        public string city { get; set; }
+        public int LeagueId { get; set; }
+
     }
 }

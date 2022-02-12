@@ -49,6 +49,16 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getteamsbyleagueid")]
+        public IActionResult GetFieldsByCities(int leagueId)
+        {
+            var result = _teamService.GetTeamsByLeagueId(leagueId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpDelete("delete")]
         public IActionResult Delete(Team team)

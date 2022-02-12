@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Entity.Concrete
 {
-    public class League:IEntity
+    public class Image:IEntity
     {
-        public int LeagueId { get; set; }
-        public string LeagueName { get; set; }
-     
+        public int ImageId { get; set; }
+        
+        public string ImagePath { get; set; }
     }
 }

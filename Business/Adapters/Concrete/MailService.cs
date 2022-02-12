@@ -25,5 +25,33 @@ namespace Business.Adapters.Concrete
             client.Send(message);
             message.To.Clear();
         }
+       
+
+        public void SendMailForEmail(User user)
+        {
+            client.Credentials = new NetworkCredential(Email, Password);
+            client.EnableSsl = true;
+
+            message.To.Add(user.Email);
+            message.From = new MailAddress("broballdestek@gmail.com");
+            message.Subject = "Doğrulama Mesajı";
+            message.Body = "Doğrulama Başarılı " ;
+
+            client.Send(message);
+            message.To.Clear();
+        }
+        public void SendMailForQuestion(User user)
+        {
+            client.Credentials = new NetworkCredential(Email, Password);
+            client.EnableSsl = true;
+
+            message.To.Add(user.Email);
+            message.From = new MailAddress("broballdestek@gmail.com");
+            message.Subject = "Bilgi Mesajı";
+            message.Body = "Sorunuz Başarı ile Gönderilmiştir " ;
+
+            client.Send(message);
+            message.To.Clear();
+        }
     }
 }
