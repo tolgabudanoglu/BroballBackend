@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Field> Fields { get; set; }
         public DbSet<League> Leagues { get; set; }
         public DbSet<Team> Teams { get; set; }
-        public DbSet<Question> Questions { get; set; }
+        public DbSet<Question> Question { get; set; }
         public DbSet<Inquery> Inqueries { get; set; }
         public DbSet<CreditCard> CreditCards { get; set; }
         public DbSet<Susbcribe> Susbcribes { get; set; }
